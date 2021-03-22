@@ -1,0 +1,1 @@
+pyuic5 src/forms/xml/main_window.ui -o src/forms/main_window.py
