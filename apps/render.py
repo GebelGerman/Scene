@@ -1,10 +1,53 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from abc import ABCMeta, abstractmethod, abstractproperty
 
 from apps.Config import CONSTANTS
 
-w = CONSTANTS.IMG_WIDTH
-h = CONSTANTS.IMG_HEIGHT
+# w = CONSTANTS.IMG_WIDTH
+# h = CONSTANTS.IMG_HEIGHT
+
+
+class SceneObject(metaclass=ABCMeta):
+    @abstractmethod
+    def intersect(self):
+        """Проверка на пересечение"""
+
+    @abstractmethod
+    def get_normal(self):
+        """Получить нормаль объекта"""
+
+    def get_color(self):
+        """Получить цвет объекта"""
+        return self.color
+
+
+
+class Plane(SceneObject):
+    pass
+
+
+class Sphere(SceneObject):
+    pass
+
+
+class Parallelepiped(SceneObject, Plane):
+    pass
+
+
+class Vector:
+    def __init__(self):
+        pass
+
+    def normalize(self, x):
+        x /= np.linalg.norm(x)
+        return x
+
+
+class Scene:
+    def __init__(self):
+        pass
+
 
 def normalize(x):
     x /= np.linalg.norm(x)
